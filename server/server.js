@@ -3,7 +3,7 @@ const http = require("http");
 const config = require('../config/config');
 const socketIO = require('socket.io');
 const app = express();
-const { generateMessage } = require('./utils/message');
+const { generateMessage, generateLocationMessage } = require('./utils/message');
 
 
 let server = http.createServer(app);
@@ -23,12 +23,13 @@ io.on('connection', (socket) => {
         io.emit('newMessage', generateMessage(message.from, message.text));
     });
 
+    socket.on('createLocationMessage', (data) => {
+        console.log('User send location', data);
+        io.emit('newLocationMessage', generateLocationMessage(data.from, data.latitude, data.longtuide));
+    });
+
     socket.on('disconnect', () => {
-        /* socket.broadcast.emit('newMessage', {
-             from: 'Username',
-             text: 'Username has left',
-             createdAt: new Date().getTime()
-         });*/
+
     });
 });
 

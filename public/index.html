@@ -5,10 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login - Simple Chat</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
+    <div class="container">
+        <ul id="messages">
+        </ul>
+        <form id="form-message">
+            <div class="form-group">
+                <input type="text" name="message" id="message" class="form-control text-center">
+            </div>
+            <button class="btn btn-primary btn-lg">
+                Send
+            </button>
+            <button type="button" id="btnSendLocation" class="btn btn-default btn-lg">
+                Send Location
+            </button>
+        </form>
+    </div>
+
     <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <script src="/js/index.js"></script>
 </body>
 </html>
